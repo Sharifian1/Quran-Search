@@ -28,9 +28,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SurahProvider>
-          {children}
-        </SurahProvider>
+        <div className="border-4 border-double border-white m-10 p-5 text-center">Quran Search</div>
+        <div className="min-h-screen border border-white m-10 h-full">
+          <SurahProvider>
+            {children}
+          </SurahProvider>
+        </div>
       </body>
     </html>
   );

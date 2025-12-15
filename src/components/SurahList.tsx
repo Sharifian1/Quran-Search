@@ -125,12 +125,17 @@ export default function SurahList() {
             {chapters.map((ch) => (
                 <li 
                     key={ch.id} 
-                    className=" items-center rounded-xl p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10"
+                    className=" items-center rounded-xl p-6 border border-white"
                 >
-                    <p className="flex font-bold">{ch.id}</p>
+                    <p className="grid grid-cols-[auto_1fr_auto] items-center">
+                        <span className="flex font-bold">{ch.id}</span>
+                        <span className="justify-self-center px-10 py-1 border rounded-md text-center">
+                            {ch.name_arabic}
+                        </span>
+                    </p>
                     <div className="space-y-5px">
                         <p className="text-[2rem] "> {ch.translated_name.name} </p>
-                        <p className="flex gap-2"><span>{ch.name_complex}</span><span>{ch.name_arabic}</span></p>
+                        <p className="flex gap-2"><span>{ch.name_complex}</span></p>
                         <div className="flex flex-col my-[15px]">
                             <div className="flex justify-between">
                                 <span className="font-semibold">Revealed in:</span>
@@ -165,7 +170,7 @@ export default function SurahList() {
                             >
                                 Load more Infos
                             </button>
-                            <Link href={`chapters/${ch.id}`} className=" ml-[50px] rounded px-[5px] py-[10px] bg-[#009000] ">Read {ch.translated_name.name} verses </Link>
+                            <Link href={`chapters/${ch.id}`} className=" ml-[10px] rounded px-[5px] py-[10px] bg-[#009000] ">Read {ch.translated_name.name}</Link>
                         </span>
                     </div>
                 </li>
@@ -180,7 +185,7 @@ export default function SurahList() {
             onClick={() => setShowModal(false)}
         >
             <div
-            className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-xl max-w-lg w-full relative"
+            className="bg-black p-6 border border-white rounded-2xl shadow-xl max-w-lg w-full relative"
             onClick={e => e.stopPropagation()}
             >
             <button
@@ -190,7 +195,7 @@ export default function SurahList() {
                 ✕
             </button>
 
-            <h2 className="text-xl font-semibold mb-2 text-center">
+            <h2 className="w-max border border-white font-semibold mb-2 text-center px-4 mx-auto">
                 {chapters.find(ch => ch.id === activeChapterId)?.name_complex}
             </h2>
             <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">

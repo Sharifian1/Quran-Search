@@ -95,11 +95,10 @@ export default function QuranSearch() {
       case "surah":
         if (!result.result) return <p>Surah not found.</p>;
         return (
-          <div className="border p-4 rounded space-y-5 prose prose-invert  outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
-            <p>{result.result.short_text}</p>
-            <p><em>Source: {result.result.source}</em></p>
-            <div dangerouslySetInnerHTML={{ __html: result.result.text }} />
-            <Link href={`/chapters/${result.query}`} className=" rounded px-[5px] py-[10px] bg-[#009000]">
+          <div className="border p-4 rounded prose prose-invert max-w-none leading-8">
+            <div className="[&>*]:mb-3" dangerouslySetInnerHTML={{ __html: result.result.text }} />
+            <p className="flex gap-10 mb-5"><em>Source: {result.result.source}</em></p>
+            <Link href={`/chapters/${result.query}`} className="rounded px-[5px] py-[10px] bg-[#009000]">
               Read All The Verses
             </Link>
           </div>
@@ -109,11 +108,11 @@ export default function QuranSearch() {
         if (!result.result) return <p>Ayah not found.</p>;
         const [surahNum, verseNum] = result.result.verse_key.split(":");
         return (
-          <div className="border p-4 rounded space-y-5 prose prose-invert outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+          <div className="border p-4 rounded prose prose-invert max-w-none leading-8">
             <h2>Surah {surahNum}, Ayah {verseNum}</h2>
             <p>{result.result.text_uthmani}</p>
             {result.result.text_indopak && <p>{result.result.text_indopak}</p>}
-            <Link href={`/chapters/${result.query}`} className=" rounded px-[5px] py-[10px] bg-[#009000]">
+            <Link href={`/chapters/${result.query}`} className="rounded px-[5px] py-[10px] bg-[#009000]">
               Read All The Verses {}
             </Link>
           </div>
